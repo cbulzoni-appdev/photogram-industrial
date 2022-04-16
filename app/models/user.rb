@@ -29,9 +29,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :sent_follow_requests, class_name: "FollowRequest", foreign_key: :sender_id, dependent: :destroy
-  has_many :accepted_sent_follow_requests, -> { where(status: "accepted") }, class_name: "FollowRequest", foreign_key: :sender_id, dependent: :destroy
+  has_many :accepted_sent_follow_requests, -> { accepted }, class_name: "FollowRequest", foreign_key: :sender_id, dependent: :destroy
   has_many :received_follow_requests, class_name: "FollowRequest", foreign_key: :recipient_id, dependent: :destroy
-  has_many :accepted_received_follow_requests, -> { where(status: "accepted") }, class_name: "FollowRequest", foreign_key: :recipient_id, dependent: :destroy
+  has_many :accepted_received_follow_requests, -> { accepted }, class_name: "FollowRequest", foreign_key: :recipient_id, dependent: :destroy
   has_many :liked_photos, through: :likes, source: :photo
   has_many :likes, class_name: "Like", foreign_key: :fan_id, dependent: :destroy
   has_many :own_photos, foreign_key: :owner_id, class_name: "Photos"
@@ -42,4 +42,7 @@ class User < ApplicationRecord
   has_many :discover, through: :leaders, source: :liked_photos
 
   validates :username, presence: true, uniqueness: true
+
+  scope :past_week, -> { where(created_at: 1.week.ago...) }
+  scope :by_likes, -> { order(likes_count: :desc) }
 end
