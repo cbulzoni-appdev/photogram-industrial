@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_16_143658) do
+ActiveRecord::Schema.define(version: 2022_04_17_134417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -79,6 +79,5 @@ ActiveRecord::Schema.define(version: 2022_04_16_143658) do
   add_foreign_key "follow_requests", "users", column: "recipient_id"
   add_foreign_key "follow_requests", "users", column: "sender_id"
   add_foreign_key "likes", "users", column: "fan_id"
-  add_foreign_key "likes", "users", column: "photo_id"
   add_foreign_key "photos", "users", column: "owner_id"
 end
