@@ -62,7 +62,6 @@ class PhotosController < ApplicationController
   end
 
   def feed
-    @user = User.find_by!(username: params.fetch(:username))
   end
 
   private
