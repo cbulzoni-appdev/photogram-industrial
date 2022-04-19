@@ -1,15 +1,16 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <h1>
-      feed
+      discover
     </h1>
 
-    <h5>
-     posts by people you follow_requests
-    </h5>
+    <h3>
+      posts liked by people you follow_requests
+    </h3>
+    
   </div>
 </div>
 
-<% current_user.feed.each do |photo| %>
+<% current_user.discover.each do |photo| %>
   <%= render "photos/photo", photo: photo %>
 <% end %>
