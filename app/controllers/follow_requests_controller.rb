@@ -47,6 +47,14 @@ class FollowRequestsController < ApplicationController
     end
   end
 
+  def followers
+    @user = User.find_by!(username: params.fetch(:username))
+  end
+
+  def leaders
+    @user = User.find_by!(username: params.fetch(:username))
+  end
+
   # DELETE /follow_requests/1 or /follow_requests/1.json
   def destroy
     @follow_request.destroy

@@ -12,6 +12,16 @@ task sample_data: :environment do
 
   usernames << "alice"
   usernames << "bob"
+  usernames << "sally"
+  usernames << "george"
+  usernames << "joe"
+  usernames << "madeline"
+  usernames << "emily"
+  usernames << "greg"
+  usernames << "carlos"
+  usernames << "maria"
+  usernames << "sonia"
+  usernames << "esther"
 
   usernames.each do |username|
     name = Faker::Name.first_name
